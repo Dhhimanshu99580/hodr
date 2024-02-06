@@ -75,7 +75,7 @@ func main() {
 
 	addr := os.Getenv("HOST_ADDR")
 	if addr == "" {
-		addr = "localhost:8080"
+		addr = "0.0.0.0:8080"
 	}
 
 	// Start the server on port 8080
