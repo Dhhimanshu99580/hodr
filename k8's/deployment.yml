@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hodr-deployment
+  labels: 
+    app: hodr
+    type: back-end
+spec:
+  template:
+    metadata:
+      name: hodr-pod
+      labels:
+        app: hodr
+        type: back-end
+    spec:
+      containers:
+      - name: hodr
+        image: himanshu99580/hodr:v2
+        ports:
+        - containerPort: 8080
+  replicas: 3
+  selector: 
+    matchlabels:
+      type: back-end
+
+---
+
+apiVesrsion: v1
+kind: Service
+metadata:
+  name: hodr-service
+spec: 
+  type: LoadBalancer
+  ports: 
+  - protocol: TCP
+    port: 80
+    targetPort: 8080
+  selector: hodr
