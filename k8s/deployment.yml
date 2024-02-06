@@ -20,7 +20,7 @@ spec:
         - containerPort: 8080
   replicas: 3
   selector: 
-    matchlabels:
+    matchLabels:
       type: back-end
 
 ---
@@ -35,4 +35,5 @@ spec:
   - protocol: TCP
     port: 80
     targetPort: 8080
-  selector: hodr
+  selector: 
+    app: hodr
